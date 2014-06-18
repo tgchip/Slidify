@@ -1,0 +1,78 @@
+---
+title       : Introduction to Data Products
+subtitle    : Mortgage Calculator
+author      : tgchip
+job         : Landscape Architect
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : [bootstrap, quiz, shiny, interactive]            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+
+--- &vcenter
+
+## Purpose
+
+1. Develop an online mortgage calculator using Shiny, R, and ShinyApps.io for deployment.
+
+2. The calculator allows the user to enter a loan amount (principle), an interest rate, and a loan duration.
+
+3. After the user enters the input information, the user can press the submit button to compute the monthly payment for the loan.
+
+4. In addition to computing the monthly payment, the remaining principle and the interest payed on the loan is plotted on the user interface.
+
+--- &vcenter
+
+## Embedded R Code Demo
+
+This slide has the R-Code monthly payement formula embedded in the markdown.  The following parameters were used to compute the monthly payment.
+
+Loan Amount: $200,000
+
+Interest Rate: 4.5%
+
+Loan Duration: 30 years
+
+
+
+```{r, echo=FALSE}
+    principle <- 200000.0
+    months <- 30*12.0
+    interest <- (4.5/100.0)/12.0
+    payment <- (principle*interest)/(1.0 - (1.0 + interest)^(-months))
+    print(paste('Monthly Payment: $', sprintf("%.2f",payment)))
+```
+
+
+--- &vcenter
+
+## Application Issues
+
+This application still has several issues that should be resolved in order to present a better user experience.  Unfortunately, I ran out of time and was unable to resolve the issues below.
+
+1. The text inputs do not display the information as a currency field.  I am not sure if I can use Shiny to modify the format of the text inputs.
+
+2. The text inputs also switch to exponential notation for large numbers.  Again, I would like to have floating point numbers with two decimal points of precision.
+
+3. The main panel plot displays exponential values for the principle and interest payed on the y-axes.  The plot should only display whole numbers on the y-axes.
+
+--- &radio
+
+## Survey Question
+
+What do you think about the application?
+
+1. _Awesome_
+
+2. Mediocre
+
+3. It SUCKS!!
+
+*** .hint
+Starts with an A!
+
+*** .explanation
+None NEEDED!
+
+
+
